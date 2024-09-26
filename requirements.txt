@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+line-bot-sdk
+numpy
+tensorflow-cpu
+Pillow
+pytesseract
+opencv-python-headless
