@@ -13,13 +13,14 @@ from fastapi import FastAPI, Request, Header, HTTPException
 from fn import append_orc_msg, bay_ocr, bbl_ocr, convert_grayscale, get_img_size, get_ocr_locations, get_rois, gov_ocr, kbank_ocr, ktb_ocr, scb_ocr, tmb_ocr
 from linebot.models import MessageEvent, TextMessage, ImageMessage, TextSendMessage
 
+os.environ["CLASSIFICATION_THRESHOLD"] = "0.7"
 
 app = FastAPI()
 
-line_id = os.getenv("LINE_BOT_BASIC_ID")
-line_bot_api = LineBotApi(os.getenv("LINE_CHANNEL_ACCESS_TOKEN"))
+line_id = os.getenv("@827vtaja")
+line_bot_api = LineBotApi(os.getenv("FZD1gpSiMLYDgn5gBOK/8KvmDBxX8YVIMSNccXzmC6nOtumVWcOsi8rwBMPC4yftdWwqCzgvbLk3HzJDoQmBqFMUbq7GRfAYfC28F/71I+swnma5CaCznszbndIzIYk+cKpxqFfnryLYQ7sCOrp2ogdB04t89/1O/w1cDnyilFU="))
 handler = WebhookHandler(os.getenv("LINE_CHANNEL_SECRET"))
-threshold = float(os.getenv("CLASSIFICATION_THRESHOLD"))
+threshold = float(os.getenv("3cff44bfb2f64bc6bc736673efbe10ba"))
 
 classification_model = tf.keras.models.load_model("./models/bank_classification_model.h5")
 classification_labels = pickle.loads(open("./models/bank_classification_labels.pickle", "rb").read())
